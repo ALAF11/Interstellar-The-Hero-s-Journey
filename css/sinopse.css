@@ -1,0 +1,59 @@
+.sinopse-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 48px;
+  align-items: start;
+}
+
+.sinopse-text {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: rgba(240,234,214,0.82);
+  margin-bottom: 22px;
+  font-weight: 300;
+}
+.sinopse-text em {
+  color: var(--amber-light);
+  font-style: italic;
+}
+
+/* Sidebar cards */
+.info-card {
+  background: rgba(200,146,42,0.04);
+  border: 1px solid rgba(200,146,42,0.15);
+  padding: 22px;
+  margin-bottom: 20px;
+}
+.info-card-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.25em;
+  color: var(--amber);
+  margin-bottom: 16px;
+}
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 1.05rem;
+  color: rgba(240,234,214,0.7);
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(200,146,42,0.07);
+}
+.info-row span:first-child {
+  color: var(--dim);
+  font-style: italic;
+}
+
+
+.theme-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+.theme-tag {
+  background: rgba(200,146,42,0.08);
+  border: 1px solid rgba(200,146,42,0.2);
+  color: rgba(200,146,42,0.8);
+  font-size: 0.95rem;
+  padding: 6px 14px;
+  letter-spacing: 0.05em;
+  font-family: 'Crimson Pro', serif;
+  font-style: italic;
+}

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INTERSTELLAR - The Hero's Journey</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/journey.css">
+  <link rel="stylesheet" href="css/sinopse.css">
+  <link rel="stylesheet" href="css/characters.css">
+  <link rel="stylesheet" href="css/media.css">
+</head>
+<body>
+
+<!-- BACKGROUND MUSIC -->
+<audio id="bgMusic" loop preload="auto">
+  <source src="audio/interstellar.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Toggle Button -->
+<button id="musicToggle" title="Toggle music">♪</button>
+
+<canvas id="starfield"></canvas>
+<div class="grain"></div>
+
+<!-- NAV -->
+<nav id="topNav">
+  <div class="nav-logo">INTERSTELLAR</div>
+  <div class="nav-links">
+    <button class="nav-btn active" data-section="journey">Hero's Journey</button>
+    <button class="nav-btn" data-section="sinopse">Sinopse</button>
+    <button class="nav-btn" data-section="characters">Characters</button>
+    <button class="nav-btn" data-section="media">Pictures &amp; Videos</button>
+  </div>
+</nav>
+
+<div id="app">
+
+  <!-- SECTION: HERO'S JOURNEY -->
+  <div id="section-journey" class="section active">
+
+    <div class="circle-section">
+      <div class="movie-header">
+        <div class="movie-title">INTERSTELLAR</div>
+        <div class="movie-meta">Christopher Nolan &nbsp;·&nbsp; 2014 &nbsp;·&nbsp; Sci-Fi / Drama</div>
+        <div class="movie-theme">"Love is the one thing that transcends time and space."</div>
+      </div>
+
+      <div class="diagram-wrap" id="diagramWrap">
+        <svg id="diagram" viewBox="-440 -340 880 680">
+          <defs>
+            <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%"   stop-color="rgba(200,146,42,0.07)"/>
+              <stop offset="100%" stop-color="transparent"/>
+            </radialGradient>
+            <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%"   stop-color="rgba(200,100,20,0.18)"/>
+              <stop offset="60%"  stop-color="rgba(10,5,2,0.5)"/>
+              <stop offset="100%" stop-color="transparent"/>
+            </radialGradient>
+          </defs>
+          <circle cx="0" cy="0" r="250" fill="url(#centerGlow)"/>
+          <circle cx="0" cy="80" r="130" fill="url(#coreGlow)"/>
+          <circle class="circle-track" cx="0" cy="0" r="210"/>
+          <circle class="circle-track-inner" cx="0" cy="0" r="168"/>
+          <line class="divider-h" x1="-230" y1="0" x2="230" y2="0"/>
+          <line class="divider-v" x1="0" y1="-230" x2="0" y2="230"/>
+          <text class="world-label" x="0" y="-72">ORDINARY</text>
+          <text class="world-label" x="0" y="-52">WORLD</text>
+          <text class="world-label" x="0" y="62">SPECIAL</text>
+          <text class="world-label" x="0" y="82">WORLD</text>
+          <text class="act-label" x="-430" y="-290" text-anchor="start">ACT III</text>
+          <text class="act-sub"   x="-430" y="-270" text-anchor="start">RETURN</text>
+          <text class="act-label" x="430"  y="-290" text-anchor="end">ACT I</text>
+          <text class="act-sub"   x="430"  y="-270" text-anchor="end">SEPARATION</text>
+          <text class="act-label" x="430"  y="290"  text-anchor="end">ACT II A</text>
+          <text class="act-sub"   x="430"  y="310"  text-anchor="end">DESCENT</text>
+          <text class="act-label" x="-430" y="290"  text-anchor="start">ACT II B</text>
+          <text class="act-sub"   x="-430" y="310"  text-anchor="start">INITIATION</text>
+          <g id="stageGroup"></g>
+        </svg>
+        <div id="rocket"><i data-lucide="rocket"></i></div>
+      </div>
+      <div class="hint">Click any stage to explore</div>
+    </div>
+
+    <div class="info-panel" id="infoPanel">
+      <button class="panel-close" id="panelClose" aria-label="Close panel">&#x2715;</button>
+      <div class="info-inner" id="infoInner"></div>
+    </div>
+
+  </div><!-- /section-journey -->
+
+
+  <div id="section-sinopse" class="section">
+    <div class="content-section">
+      <div class="content-header">
+        <span class="content-tag">2014 · Christopher Nolan · Sci-Fi / Drama</span>
+        <h1 class="content-title">Synopsis</h1>
+        <div class="content-divider"></div>
+      </div>
+      <div class="sinopse-grid">
+        <div class="sinopse-main">
+          <p class="sinopse-text">In the late 21st century, Earth is dying. Civilisation faces extinction through a devastating agricultural blight that destroys crop after crop, making the air unbreathable and life unsustainable. On a farm in rural America, <em>Cooper</em>, a former NASA pilot turned farmer, raises his children while struggling to survive in a world that no longer has a place for explorers.</p>
+          <p class="sinopse-text">A series of mysterious gravitational anomalies leads Cooper to a secret NASA facility, where Professor Brand reveals humanity's last plan: travel through a wormhole discovered near Saturn and find a new home among the stars. Cooper is recruited to pilot the <em>Endurance</em> on a mission that may save the species but will force him to abandon his children, possibly forever.</p>
+          <p class="sinopse-text">What follows is a journey through space and time that defies the laws of physics and the limits of paternal love. Amid black holes, time dilation and the betrayal of human nature, Cooper and his crew discover that the greatest obstacle to humanity's survival is not the universe. It is humanity itself.</p>
+          <p class="sinopse-text"><em>Interstellar</em> is a meditation on love as a cosmic force, on sacrifice, and on what makes us human when everything else fails.</p>
+        </div>
+        <div class="sinopse-sidebar">
+          <div class="info-card">
+            <div class="info-card-title">Film Details</div>
+            <div class="info-row"><span>Director</span><span>Christopher Nolan</span></div>
+            <div class="info-row"><span>Screenplay</span><span>Jonathan Nolan</span></div>
+            <div class="info-row"><span>Year</span><span>2014</span></div>
+            <div class="info-row"><span>Runtime</span><span>169 minutes</span></div>
+            <div class="info-row"><span>Genre</span><span>Sci-Fi / Drama</span></div>
+            <div class="info-row"><span>Music</span><span>Hans Zimmer</span></div>
+            <div class="info-row"><span>Awards</span><span>Oscar VFX 2015</span></div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-title">Central Themes</div>
+            <div class="theme-tags">
+              <span class="theme-tag">Paternal Love</span>
+              <span class="theme-tag">Relativity</span>
+              <span class="theme-tag">Sacrifice</span>
+              <span class="theme-tag">Survival</span>
+              <span class="theme-tag">Time</span>
+              <span class="theme-tag">Faith vs. Science</span>
+              <span class="theme-tag">Exploration</span>
+              <span class="theme-tag">Betrayal</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /section-sinopse -->
+
+  <!--SECTION: CHARACTERS -->
+  <div id="section-characters" class="section">
+    <div class="content-section">
+      <div class="content-header">
+        <span class="content-tag">Main Characters</span>
+        <h1 class="content-title">Characters</h1>
+        <div class="content-divider"></div>
+      </div>
+
+      <div class="characters-grid">
+
+        <div class="char-card">
+          <div class="char-photo-wrap">
+            <img class="char-photo" src="images/cooper.jpg" alt="Cooper — Matthew McConaughey">
+          </div>
+          <div class="char-body">
+            <div class="char-name">Cooper</div>
+            <div class="char-actor">Matthew McConaughey</div>
+            <div class="char-role">Hero · Pilot</div>
+            <p class="char-desc">A former NASA pilot turned farmer, Cooper is a man of science trapped in a dying world. Driven by his love for his daughter Murph and his hunger for exploration, he accepts the impossible mission of finding a new home for humanity.</p>
+          </div>
+        </div>
+
+        <div class="char-card">
+          <div class="char-photo-wrap">
+            <img class="char-photo" src="images/murph.jpg" alt="Murph — Jessica Chastain">
+          </div>
+          <div class="char-body">
+            <div class="char-name">Murphy Cooper</div>
+            <div class="char-actor">Mackenzie Foy / Jessica Chastain</div>
+            <div class="char-role">Daughter · Scientist</div>
+            <p class="char-desc">Cooper's daughter, brilliant and furious at her father's departure. As an adult, she becomes a NASA scientist and discovers that the childhood "ghost" in her room was her father communicating across time. She is the one who solves the equation that saves humanity.</p>
+          </div>
+        </div>
+
+        <div class="char-card">
+          <div class="char-photo-wrap">
+            <img class="char-photo" src="images/amelia.avif" alt="Amelia Brand — Anne Hathaway">
+          </div>
+          <div class="char-body">
+            <div class="char-name">Amelia Brand</div>
+            <div class="char-actor">Anne Hathaway</div>
+            <div class="char-role">Scientist · Astronaut</div>
+            <p class="char-desc">Professor Brand's daughter and a core member of the mission. She argues that love may be a measurable force in the universe. Her instinct about Edmunds' planet proves correct and in the end she alone builds the future of humanity there.</p>
+          </div>
+        </div>
+
+        <div class="char-card">
+          <div class="char-photo-wrap">
+            <img class="char-photo" src="images/brand.jpg" alt="Professor Brand — Michael Caine">
+          </div>
+          <div class="char-body">
+            <div class="char-name">Professor Brand</div>
+            <div class="char-actor">Michael Caine</div>
+            <div class="char-role">Mentor · NASA Director</div>
+            <p class="char-desc">Director of NASA's secret programme. He presents Plan A and Plan B but hides a devastating secret: he knows Plan A is impossible, having sacrificed the truth in hopes of keeping the mission alive.</p>
+          </div>
+        </div>
+
+        <div class="char-card">
+          <div class="char-photo-wrap">
+            <img class="char-photo" src="images/tars.jpg" alt="TARS">
+          </div>
+          <div class="char-body">
+            <div class="char-name">TARS</div>
+            <div class="char-actor">Bill Irwin (voice)</div>
+            <div class="char-role">AI Robot · Companion</div>
+            <p class="char-desc">A NASA robot with a configurable personality, including adjustable humour and honesty settings. He sacrifices himself to enter Gargantua and collect quantum data. It is thanks to TARS that Cooper is able to transmit his message to Murph across time.</p>
+          </div>
+        </div>
+
+        <div class="char-card char-villain">
+          <div class="char-photo-wrap">
+            <img class="char-photo" src="images/mann.webp" alt="Dr. Mann — Matt Damon">
+          </div>
+          <div class="char-body">
+            <div class="char-name">Dr. Mann</div>
+            <div class="char-actor">Matt Damon</div>
+            <div class="char-role">Antagonist · Scientist</div>
+            <p class="char-desc">Considered the best of the astronauts sent on the Lazarus mission, Mann falsified his planet's data to be rescued. He represents the survival instinct taken to its most selfish extreme. His betrayal nearly destroys the Endurance and the entire mission.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div><!-- /section-characters -->
+
+
+  <!-- SECTION: PICTURES & VIDEOS -->
+  <div id="section-media" class="section">
+    <div class="content-section">
+      <div class="content-header">
+        <span class="content-tag">Visual Universe</span>
+        <h1 class="content-title">Pictures &amp; Videos</h1>
+        <div class="content-divider"></div>
+      </div>
+      <div class="media-grid">
+
+        <div class="media-card media-large" onclick="window.open('https://youtube.com/watch?v=zSWdZVtXT7E','_blank')">
+          <div class="media-thumb" style="background:radial-gradient(ellipse at 40% 50%,#c8601a,#7a3a0a 30%,#1a0a02 70%,#02040a)">
+            <div class="media-play-icon">&#x25B6;</div>
+            <div class="media-overlay"><span class="media-type-tag">Trailer Oficial</span></div>
+          </div>
+          <div class="media-info">
+            <div class="media-title">Official Trailer</div>
+            <div class="media-sub">Warner Bros. Pictures · 2014</div>
+          </div>
+        </div>
+
+        <div class="media-card">
+          <div class="media-thumb" style="background-image: url('images/millers-planet.jpg'); background-size: cover; background-position: center;">
+            <div class="media-overlay"><span class="media-type-tag">Scene</span></div>
+          </div>
+          <div class="media-info">
+            <div class="media-title">Miller's Planet</div>
+            <div class="media-sub">Tidal wave sequence</div>
+          </div>
+        </div>
+
+        <div class="media-card">
+          <div class="media-thumb" style="background-image: url('images/gargantua.jpeg'); background-size: cover; background-position: center;">
+            <div class="media-overlay"><span class="media-type-tag">Scene</span></div>
+          </div>
+          <div class="media-info">
+            <div class="media-title">Gargantua</div>
+            <div class="media-sub">The black hole approach</div>
+          </div>
+        </div>
+
+        <div class="media-card">
+          <div class="media-thumb" style="background-image: url('images/cooper-leaving.avif'); background-size: cover; background-position: center;">
+            <div class="media-overlay"><span class="media-type-tag">Scene</span></div>
+          </div>
+          <div class="media-info">
+            <div class="media-title">The Departure</div>
+            <div class="media-sub">Cooper leaves his family</div>
+          </div>
+        </div>
+
+        <div class="media-card">
+          <div class="media-thumb" style="background-image: url('images/tesseract.jpeg'); background-size: cover; background-position: center;">
+            <div class="media-overlay"><span class="media-type-tag">Scene</span></div>
+          </div>
+          <div class="media-info">
+            <div class="media-title">The Tesseract</div>
+            <div class="media-sub">Inside the black hole</div>
+          </div>
+        </div>
+
+        <div class="media-card media-large" onclick="window.open('https://www.youtube.com/watch?v=4f9V-8BHONo','_blank')">
+          <div class="media-thumb" style="background:radial-gradient(ellipse at 50% 60%,#c8922a,#6a4a1a 40%,#02040a)">
+            <div class="media-play-icon">&#x25B6;</div>
+            <div class="media-overlay"><span class="media-type-tag">Featurette</span></div>
+          </div>
+          <div class="media-info">
+            <div class="media-title">The Science of Interstellar</div>
+            <div class="media-sub">Kip Thorne · Physics consultant</div>
+          </div>
+        </div>
+
+        <div class="media-card">
+          <div class="media-thumb" style="background-image: url('images/endurance.jpg'); background-size: cover; background-position: center;">
+            <div class="media-overlay"><span class="media-type-tag">Behind the Scenes</span></div>
+          </div>
+          <div class="media-info">
+            <div class="media-title">Building the Endurance</div>
+            <div class="media-sub">VFX &amp; production design</div>
+          </div>
+        </div>
+
+        <div class="media-card">
+          <div class="media-thumb" style="background-image: url('images/hans.jpg'); background-size: cover; background-position: center;">
+            <div class="media-overlay"><span class="media-type-tag">Soundtrack</span></div>
+          </div>
+          <div class="media-info">
+            <div class="media-title">Hans Zimmer — Main Theme</div>
+            <div class="media-sub">Original Motion Picture Soundtrack</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="media-note">&#x2726; These cards represent key scenes, trailers and featurettes from Interstellar.</div>
+    </div>
+  </div><!-- /section-media -->
+
+</div><!-- /app -->
+
+<script src="js/starfield.js"></script>
+<script src="js/data.js"></script>
+<script src="js/journey.js"></script>
+<script src="js/nav.js"></script>
+</body>
+</html>
